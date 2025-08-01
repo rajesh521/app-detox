@@ -58,42 +58,20 @@
       "backgroundColor": "#1f2937"
     },
     "plugins": [
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/notification-icon.png",
-          "color": "#8b5cf6",
-          "defaultChannel": "default",
-          "sounds": [
-            "./assets/sounds/notification.wav"
-          ]
-        }
-      ],
-      [
-        "expo-task-manager"
-      ],
-      [
-        "expo-background-fetch"
-      ],
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./assets/fonts/Inter-Regular.ttf",
-            "./assets/fonts/Inter-Medium.ttf",
-            "./assets/fonts/Inter-SemiBold.ttf",
-            "./assets/fonts/Inter-Bold.ttf"
-          ]
-        }
-      ]
+      "expo-dev-client",
+      "expo-system-ui",
+      "expo-notifications",
+      "expo-task-manager",
+      "expo-background-fetch"
     ],
     "experiments": {
       "typedRoutes": false
     },
     "extra": {
       "eas": {
-        "projectId": "brain-detox-app"
+        "projectId": "94a08766-428d-4cd0-871a-92c28755efad"
       }
-    }
+    },
+    "owner": "rajesh221"
   }
 }

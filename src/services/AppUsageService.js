@@ -1,6 +1,25 @@
 import { AppState } from 'react-native';
+import * as BackgroundFetch from 'expo-background-fetch';
+import * as TaskManager from 'expo-task-manager';
 import storageService from './StorageService';
 import timerService from './TimerService';
+import notificationService from './NotificationService';
+
+const BACKGROUND_FETCH_TASK = 'background-fetch-usage';
+
+// Define the background task
+TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
+  try {
+    console.log('Background fetch: monitoring app usage');
+    // Update usage data in background
+    const service = new AppUsageService();
+    await service.updateBackgroundUsage();
+    return BackgroundFetch.BackgroundFetchResult.NewData;
+  } catch (error) {
+    console.error('Background fetch error:', error);
+    return BackgroundFetch.BackgroundFetchResult.Failed;
+  }
+});
 
 class AppUsageService {
   constructor() {
@@ -9,10 +28,11 @@ class AppUsageService {
     this.sessionStartTime = null;
     this.appStateSubscription = null;
     this.trackingInterval = null;
+    this.backgroundTaskRegistered = false;
   }
 
   // Start tracking app usage
-  startTracking() {
+  async startTracking() {
     if (this.isTracking) return;
 
     this.isTracking = true;
@@ -25,6 +45,9 @@ class AppUsageService {
     this.trackingInterval = setInterval(() => {
       this.updateCurrentSession();
     }, 30000);
+
+    // Register background fetch task
+    await this.registerBackgroundTask();
 
     console.log('App usage tracking started');
   }

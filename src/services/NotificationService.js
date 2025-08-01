@@ -1,4 +1,45 @@
 import * as Notifications from 'expo-notifications';
+
+class NotificationService {
+  constructor() {}
+
+  // Set up local notifications for limit warnings
+  async scheduleLimitWarning(appName, limitTime) {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Limit Warning',
+        body: `${appName} is close to your limit of ${limitTime} minutes!`,
+      },
+      trigger: null,
+    });
+  }
+
+  // Create motivational push notifications
+  async scheduleMotivationalNotification(message) {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Stay Motivated!',
+        body: message,
+      },
+      trigger: null,
+    });
+  }
+
+  // Implement puzzle reminder notifications
+  async schedulePuzzleReminder() {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Puzzle Time!',
+        body: 'Don’t forget to solve today’s puzzle!',
+      },
+      trigger: { hours: 9, minutes: 0, repeats: true },
+    });
+  }
+}
+
+export default new NotificationService();
+
+import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import timerService from './TimerService';
 

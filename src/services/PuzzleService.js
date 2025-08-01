@@ -1,3 +1,37 @@
+import storageService from './StorageService';
+
+class PuzzleService {
+  constructor() {
+    this.puzzleHistory = [];
+  }
+
+  // Connect puzzle solving to app unlock
+  async solvePuzzle(puzzle) {
+    // Logic for solving puzzle and unlocking app
+    const result = this.checkSolution(puzzle);
+    this.storePuzzleResult(puzzle, result);
+    return result;
+  }
+
+  // Implement puzzle difficulty scaling
+  scaleDifficulty(userStats) {
+    // Adjust difficulty based on user performance stats
+  }
+
+  // Store puzzle result
+  storePuzzleResult(puzzle, result) {
+    this.puzzleHistory.push({ puzzle, result, timestamp: new Date() });
+    storageService.savePuzzleHistory(this.puzzleHistory);
+  }
+
+  // Get puzzle history
+  getPuzzleHistory() {
+    return this.puzzleHistory;
+  }
+}
+
+export default new PuzzleService();
+
 // PuzzleService.js
 import generateMathPuzzle from '../utils/MathPuzzleGenerator';
 import generateMemoryPuzzle from '../utils/MemoryGameGenerator';
