@@ -1,0 +1,99 @@
+{
+  "expo": {
+    "name": "Brain Detox",
+    "slug": "brain-detox",
+    "version": "1.0.0",
+    "description": "A minimalist screen time management app following Steve Jobs' design philosophy. Control digital habits through beautiful design, engaging brain puzzles, and intuitive user experience.",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1f2937"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.braindetox.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSUserNotificationAlertStyle": "alert",
+        "UIBackgroundModes": [
+          "background-fetch",
+          "background-processing"
+        ],
+        "BGTaskSchedulerPermittedIdentifiers": [
+          "com.braindetox.app.background-fetch"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1f2937"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.braindetox.app",
+      "versionCode": 1,
+      "permissions": [
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK",
+        "android.permission.VIBRATE",
+        "android.permission.USE_FULL_SCREEN_INTENT",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.PACKAGE_USAGE_STATS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "Brain Detox",
+      "shortName": "BrainDetox",
+      "lang": "en",
+      "scope": "/",
+      "themeColor": "#8b5cf6",
+      "backgroundColor": "#1f2937"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#8b5cf6",
+          "defaultChannel": "default",
+          "sounds": [
+            "./assets/sounds/notification.wav"
+          ]
+        }
+      ],
+      [
+        "expo-task-manager"
+      ],
+      [
+        "expo-background-fetch"
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Inter-Regular.ttf",
+            "./assets/fonts/Inter-Medium.ttf",
+            "./assets/fonts/Inter-SemiBold.ttf",
+            "./assets/fonts/Inter-Bold.ttf"
+          ]
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
+    },
+    "extra": {
+      "eas": {
+        "projectId": "brain-detox-app"
+      }
+    }
+  }
+}
